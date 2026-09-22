@@ -1,0 +1,1478 @@
+/* ==========================================================================
+   斯洛維尼亞傳統農家：三大文明洗禮的風土史詩 | DIGITAL CURATION STYLESHEET
+   ========================================================================== */
+
+:root {
+  --font-serif: 'Noto Serif TC', 'Cinzel', Georgia, serif;
+  --font-display: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* 色彩系統：阿爾卑斯、喀斯特紅土與大地原木色調 */
+  --bg-dark: #0f1211;
+  --bg-card-dark: #181d1b;
+  --bg-light: #fbf9f5;
+  --bg-card-light: #ffffff;
+  
+  --primary-gold: #d4af37;
+  --primary-gold-light: #f3e5ab;
+  --primary-gold-dark: #aa8c2c;
+
+  --slavic-forest: #1e3f20;
+  --slavic-light: #4e8353;
+  --germanic-slate: #2b3a4a;
+  --germanic-light: #526f8d;
+  --latin-terracotta: #a63a24;
+  --latin-light: #d66850;
+
+  --alpine-pine: #1b382b;
+  --karst-stone: #686963;
+  --wood-warm: #845a38;
+
+  --text-main-dark: #eae6df;
+  --text-muted-dark: #9da39f;
+  --text-main-light: #1f2421;
+  --text-muted-light: #5c635e;
+
+  --border-dark: rgba(212, 175, 55, 0.18);
+  --border-glass: rgba(255, 255, 255, 0.08);
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.5);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-main-dark);
+  font-family: var(--font-sans);
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+p {
+  font-size: 1.05rem;
+  color: var(--text-muted-dark);
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--primary-gold);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-gold-light);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ==========================================================================
+   NAVBAR 導航列
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2.5rem;
+  background: rgba(15, 18, 17, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-glass);
+  transition: all var(--transition-normal);
+}
+
+.navbar.scrolled {
+  padding: 0.8rem 2.5rem;
+  background: rgba(12, 15, 14, 0.95);
+  border-bottom-color: var(--border-dark);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.nav-brand-icon {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a1a1a;
+  font-size: 1.25rem;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
+}
+
+.nav-brand-text h1 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.nav-brand-text span {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--primary-gold);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.8rem;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-main-dark);
+  position: relative;
+  padding: 0.4rem 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-gold);
+  transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sound-toggle {
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid var(--primary-gold);
+  color: var(--primary-gold-light);
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sound-toggle:hover {
+  background: var(--primary-gold);
+  color: #111;
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.4);
+}
+
+.sound-toggle.playing {
+  background: #235839;
+  border-color: #5cdb95;
+  color: #fff;
+  animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+  0% { box-shadow: 0 0 0 0 rgba(92, 219, 149, 0.6); }
+  70% { box-shadow: 0 0 0 10px rgba(92, 219, 149, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(92, 219, 149, 0); }
+}
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   HERO 首頁視覺
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 1.5rem 6rem;
+  background-image: url('images/hero_kozolec.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  background-attachment: fixed;
+}
+
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 18, 17, 0.75) 0%, rgba(15, 18, 17, 0.88) 60%, var(--bg-dark) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 960px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: var(--primary-gold-light);
+  padding: 0.45rem 1.25rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 1.6rem;
+  line-height: 1.18;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #fff2c6 0%, #d4af37 50%, #e29931 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.8;
+  color: #d1d8d4;
+  margin-bottom: 2.8rem;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.8rem;
+  background: rgba(24, 29, 27, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 1.4rem 2rem;
+  margin-bottom: 2.8rem;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--primary-gold-light);
+}
+
+.stat-text {
+  font-size: 0.8rem;
+  color: var(--text-muted-dark);
+  margin-top: 0.2rem;
+  text-align: center;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
+  color: #111413;
+  padding: 0.95rem 2.2rem;
+  border-radius: var(--radius-full);
+  font-size: 1rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.35);
+  transition: all var(--transition-fast);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-gold-light), var(--primary-gold));
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  padding: 0.95rem 2rem;
+  border-radius: var(--radius-full);
+  font-size: 1rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  backdrop-filter: blur(8px);
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #ffffff;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  opacity: 0.7;
+}
+
+.scroll-text {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--primary-gold);
+}
+
+.scroll-arrow {
+  color: var(--primary-gold);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(6px); }
+  60% { transform: translateY(3px); }
+}
+
+/* ==========================================================================
+   COMMON SECTION STYLES
+   ========================================================================== */
+.section {
+  padding: 6.5rem 0;
+  position: relative;
+}
+
+.section-dark {
+  background-color: #0a0c0b;
+}
+
+.section-header {
+  max-width: 800px;
+  margin: 0 auto 3.8rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--primary-gold);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+}
+
+.section-desc {
+  font-size: 1.1rem;
+  color: var(--text-muted-dark);
+  line-height: 1.8;
+}
+
+/* ==========================================================================
+   SECTION 1: 三大文明交匯 (TRIAD TABS & PANELS)
+   ========================================================================== */
+.triad-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.triad-tab {
+  background: rgba(24, 29, 27, 0.8);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 1.4rem 1.2rem;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: var(--text-muted-dark);
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.triad-tab i {
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+  color: var(--primary-gold);
+  transition: transform var(--transition-fast);
+}
+
+.triad-tab .tab-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.triad-tab .tab-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted-dark);
+}
+
+.triad-tab:hover {
+  background: rgba(35, 42, 39, 0.9);
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+.triad-tab:hover i {
+  transform: scale(1.1);
+}
+
+.triad-tab.active {
+  background: #19231f;
+  border-color: var(--primary-gold);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.triad-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary-gold);
+}
+
+/* Triad Panels */
+.triad-panel {
+  display: none;
+  background: var(--bg-card-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  box-shadow: var(--shadow-lg);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.triad-panel.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.triad-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.civilization-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.2rem;
+}
+
+.badge-slavic { background: rgba(78, 131, 83, 0.2); border: 1px solid var(--slavic-light); color: #84d28c; }
+.badge-germanic { background: rgba(82, 111, 141, 0.2); border: 1px solid var(--germanic-light); color: #9bc4ed; }
+.badge-latin { background: rgba(214, 104, 80, 0.2); border: 1px solid var(--latin-light); color: #f49f8a; }
+
+.triad-heading {
+  font-size: 1.85rem;
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+}
+
+.triad-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1.8rem;
+}
+
+.triad-highlights {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.triad-highlights li {
+  display: flex;
+  gap: 0.9rem;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: #d1d8d4;
+}
+
+.triad-highlights li i {
+  color: var(--primary-gold);
+  font-size: 1rem;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.triad-highlights strong {
+  color: #ffffff;
+}
+
+/* Triad Media Card */
+.media-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-glass);
+}
+
+.media-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.media-card:hover .media-img {
+  transform: scale(1.03);
+}
+
+.media-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.4rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.88) 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.caption-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.caption-sub {
+  font-size: 0.82rem;
+  color: var(--primary-gold-light);
+}
+
+.media-thumbnails {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+  margin-top: 1rem;
+}
+
+.thumb-item {
+  position: relative;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--border-glass);
+  height: 85px;
+  transition: all var(--transition-fast);
+}
+
+.thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.thumb-item span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.25rem 0.4rem;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 0.72rem;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.thumb-item:hover {
+  border-color: var(--primary-gold);
+  transform: translateY(-2px);
+}
+
+.thumb-item:hover img {
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   SECTION 2: 建築工藝深度解構
+   ========================================================================== */
+.arch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.arch-card {
+  background: var(--bg-card-dark);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.arch-card:hover {
+  border-color: var(--border-dark);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.arch-img-wrap {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.arch-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.arch-card:hover .arch-img-wrap img {
+  transform: scale(1.08);
+}
+
+.arch-tag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--primary-gold);
+  color: var(--primary-gold-light);
+  padding: 0.25rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.arch-body {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.arch-name {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+}
+
+.arch-origin {
+  font-size: 0.82rem;
+  color: var(--primary-gold);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.arch-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-muted-dark);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.arch-tech {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-glass);
+}
+
+.tech-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  color: #d1d8d4;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tech-item i {
+  color: var(--primary-gold);
+}
+
+/* ==========================================================================
+   SECTION 3: 大地廚房與風土特產
+   ========================================================================== */
+.gastro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.gastro-card {
+  background: var(--bg-card-dark);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.gastro-card:hover {
+  border-color: rgba(212, 175, 55, 0.35);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.gastro-img {
+  height: 200px;
+  overflow: hidden;
+}
+
+.gastro-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gastro-card:hover .gastro-img img {
+  transform: scale(1.06);
+}
+
+.gastro-content {
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.gastro-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.78rem;
+}
+
+.gastro-type {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--primary-gold-light);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+
+.gastro-loc {
+  color: var(--text-muted-dark);
+}
+
+.gastro-title {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-bottom: 0.8rem;
+}
+
+.gastro-text {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-muted-dark);
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   SECTION 4: 互動風土走讀地圖 (LEAFLET & SIDEBAR)
+   ========================================================================== */
+.map-layout {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.8rem;
+  background: var(--bg-card-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.map-container-wrap {
+  position: relative;
+  height: 540px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-glass);
+}
+
+#terroir-map {
+  width: 100%;
+  height: 100%;
+  background: #111;
+  z-index: 10;
+}
+
+.map-overlay-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 20;
+  background: rgba(15, 18, 17, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-dark);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  color: var(--primary-gold-light);
+  font-weight: 600;
+}
+
+.map-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 540px;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-glass);
+  margin-bottom: 1rem;
+}
+
+.sidebar-header h3 {
+  font-size: 1.25rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge-count {
+  background: rgba(212, 175, 55, 0.2);
+  color: var(--primary-gold-light);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.trail-list {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-right: 0.4rem;
+}
+
+.trail-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.trail-list::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 4px;
+}
+
+.trail-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.trail-item:hover,
+.trail-item.active {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--primary-gold);
+  transform: translateX(4px);
+}
+
+.trail-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.trail-item-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.trail-item-tag {
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--primary-gold-light);
+}
+
+.trail-item-desc {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-muted-dark);
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   SECTION 5: 實景攝影典藏 (GALLERY & LIGHTBOX)
+   ========================================================================== */
+.gallery-filter-btns {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-muted-dark);
+  padding: 0.5rem 1.3rem;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--primary-gold);
+  border-color: var(--primary-gold);
+  color: #111;
+  font-weight: 700;
+}
+
+.gallery-masonry {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  height: 260px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-glass);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 20%, rgba(0, 0, 0, 0.88) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  opacity: 0.9;
+  transition: all var(--transition-fast);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0, 0, 0, 0.95) 100%);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-tag {
+  align-self: flex-start;
+  background: rgba(212, 175, 55, 0.3);
+  color: var(--primary-gold-light);
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.gallery-overlay h4 {
+  font-size: 1.15rem;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+}
+
+.gallery-overlay p {
+  font-size: 0.78rem;
+  color: var(--primary-gold-light);
+  margin-bottom: 0;
+}
+
+/* Lightbox Modal */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(12px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.open {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox-dialog {
+  background: var(--bg-card-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  max-width: 900px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  animation: zoomIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.92); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.lightbox-close:hover {
+  background: var(--primary-gold);
+  color: #111;
+  transform: rotate(90deg);
+}
+
+.lightbox-img-wrap {
+  width: 100%;
+  max-height: 520px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img-wrap img {
+  width: 100%;
+  height: 100%;
+  max-height: 520px;
+  object-fit: contain;
+}
+
+.lightbox-info {
+  padding: 1.8rem 2rem;
+}
+
+.lightbox-info h3 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+}
+
+.lightbox-info p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #d1d8d4;
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   SECTION 6: 現代生態慢旅 (AGRITOURISM)
+   ========================================================================== */
+.agri-banner {
+  background: linear-gradient(135deg, rgba(27, 56, 43, 0.7) 0%, rgba(15, 22, 19, 0.95) 100%), url('images/thatched_farmhouse.jpg');
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(92, 219, 149, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 4.5rem 3rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.agri-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.agri-title {
+  font-size: clamp(2rem, 3.2vw, 2.7rem);
+  color: #ffffff;
+  margin-bottom: 1.4rem;
+}
+
+.agri-desc {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #e0e6e2;
+  margin-bottom: 3rem;
+}
+
+.agri-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  text-align: left;
+}
+
+.feat-box {
+  background: rgba(15, 18, 17, 0.65);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  transition: all var(--transition-fast);
+}
+
+.feat-box:hover {
+  background: rgba(15, 18, 17, 0.85);
+  border-color: rgba(92, 219, 149, 0.5);
+  transform: translateY(-4px);
+}
+
+.feat-box i {
+  font-size: 2rem;
+  color: #5cdb95;
+  margin-bottom: 1rem;
+}
+
+.feat-box h4 {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+}
+
+.feat-box p {
+  font-size: 0.92rem;
+  color: var(--text-muted-dark);
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   FOOTER 頁尾
+   ========================================================================== */
+.footer {
+  background-color: #080a09;
+  border-top: 1px solid var(--border-glass);
+  padding: 5rem 0 2.5rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3.5rem;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-logo i {
+  color: var(--primary-gold);
+}
+
+.footer-brand p {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-sub {
+  font-size: 0.8rem;
+  color: var(--primary-gold);
+}
+
+.footer-links-group h4 {
+  font-size: 1.05rem;
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+.footer-links-group ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.footer-links-group a {
+  color: var(--text-muted-dark);
+  font-size: 0.92rem;
+}
+
+.footer-links-group a:hover {
+  color: var(--primary-gold-light);
+  padding-left: 4px;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 0.85rem;
+  color: #636b66;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (RWD 響應式佈局)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .triad-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .map-layout {
+    grid-template-columns: 1fr;
+  }
+  .map-container-wrap {
+    height: 420px;
+  }
+  .map-sidebar {
+    height: auto;
+    max-height: 400px;
+  }
+  .agri-features {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+  .nav-links {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: rgba(15, 18, 17, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--border-dark);
+    display: none;
+  }
+  .nav-links.show {
+    display: flex;
+  }
+  .nav-toggle {
+    display: block;
+  }
+  .sound-toggle span {
+    display: none;
+  }
+  .triad-tabs {
+    grid-template-columns: 1fr;
+  }
+  .triad-panel {
+    padding: 1.8rem 1.4rem;
+  }
+  .hero-stats {
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.2rem;
+  }
+  .stat-divider {
+    width: 60px;
+    height: 1px;
+  }
+  .gallery-masonry {
+    grid-template-columns: 1fr;
+  }
+}

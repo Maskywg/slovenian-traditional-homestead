@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三大文明洗禮的風土史詩 | 斯洛維尼亞傳統農家與極東邊境農業數位策展</title>
+  <meta name="description" content="深入探索歐洲斯拉夫、日耳曼、拉丁三大文明交會下的斯洛維尼亞傳統農家（Slovenska Domačija），解構乾草架Kozolec、黑廚房、大高原牧民起司、喀斯特防風石屋與自然派橘酒。">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Noto+Serif+TC:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="lib/leaflet.css" />
+  <script>
+    if (!document.querySelector('link[href="lib/leaflet.css"]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+      document.head.appendChild(link);
+    }
+  </script>
+
+  <!-- Leaflet JS -->
+  <script src="lib/leaflet.js"></script>
+  <script>
+    if (typeof L === 'undefined') {
+      document.write('<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"><\/script>');
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 頂部導航列 -->
+  <header class="navbar" id="navbar">
+    <a href="#" class="nav-brand">
+      <div class="nav-brand-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+      <div class="nav-brand-text">
+        <h1>DOMAČIJA</h1>
+        <span>Slovenian Rural Heritage</span>
+      </div>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#triad" class="nav-link">三大文明交匯</a></li>
+      <li><a href="#architecture" class="nav-link">建築工藝解構</a></li>
+      <li><a href="#gastronomy" class="nav-link">大地廚房與風土</a></li>
+      <li><a href="#map-section" class="nav-link">風土走讀地圖</a></li>
+      <li><a href="#gallery" class="nav-link">實景攝影典藏</a></li>
+      <li><a href="#agritourism" class="nav-link">現代生態慢旅</a></li>
+    </ul>
+
+    <div class="nav-controls">
+      <button id="sound-toggle-btn" class="sound-toggle" aria-label="切換風土環境音">
+        <i class="fa-solid fa-volume-xmark"></i> <span id="sound-label">田野環境原音</span>
+      </button>
+      <button class="nav-toggle" id="nav-toggle-btn" aria-label="切換選單">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO 首頁大景視覺 -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fa-solid fa-compass"></i> 極東義大利 × 斯洛維尼亞 邊境農業史詩
+      </div>
+      <h1 class="hero-title">
+        三大文明洗禮下的<br>
+        <span class="gold-gradient">斯洛維尼亞傳統農家</span>
+      </h1>
+      <p class="hero-subtitle">
+        在歐洲唯一交匯<strong>斯拉夫（靈性木構）</strong>、<strong>日耳曼（精密農牧）</strong>與<strong>拉丁（地中海風土）</strong>的心臟樞紐，探索全世界獨有的雙聯乾草架、黑廚房煙燻智慧、高原定情起司與紅土石造農莊。
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">3</span>
+          <span class="stat-text">大歐洲文明交匯</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">100%</span>
+          <span class="stat-text">國寶木構乾草架 Kozolec</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">4</span>
+          <span class="stat-text">大微氣候農莊地景</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-num">1,000+</span>
+          <span class="stat-text">綠星生態農莊旅宿</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a href="#triad" class="btn-primary">
+          <i class="fa-solid fa-book-open"></i> 進入文明策展導讀
+        </a>
+        <a href="#map-section" class="btn-secondary">
+          <i class="fa-solid fa-map-location-dot"></i> 互動風土地圖
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span class="scroll-text">向下探索風土傳奇</span>
+      <i class="fa-solid fa-chevron-down scroll-arrow"></i>
+    </div>
+  </section>
+
+  <!-- SECTION 1: 三大文明交匯的三重視角 -->
+  <section class="section section-triad" id="triad">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag"><i class="fa-solid fa-layer-group"></i> HISTORICAL CRADLE</span>
+        <h2 class="section-title">三大文明交織的風土基因</h2>
+        <p class="section-desc">
+          斯洛維尼亞是歐洲唯一同時座落於<strong>阿爾卑斯山脈、地中海海岸、潘諾尼亞平原與喀斯特高原</strong>的國度。三大歐洲主流文明在此撞擊融合，造就了舉世無雙的農耕智慧。
+        </p>
+      </div>
+
+      <!-- 文明切換標籤 -->
+      <div class="triad-tabs">
+        <button class="triad-tab active" data-tab="slavic">
+          <i class="fa-solid fa-tree"></i>
+          <span class="tab-title">斯拉夫底蘊</span>
+          <span class="tab-sub">靈性木構・部落共耕・自然崇拜</span>
+        </button>
+        <button class="triad-tab" data-tab="germanic">
+          <i class="fa-solid fa-mountain"></i>
+          <span class="tab-title">日耳曼／哈布斯堡秩序</span>
+          <span class="tab-sub">高山牧業・精準工藝・水力磨坊</span>
+        </button>
+        <button class="triad-tab" data-tab="latin">
+          <i class="fa-solid fa-wine-glass"></i>
+          <span class="tab-title">拉丁／地中海風土</span>
+          <span class="tab-sub">石灰岩厚牆・風乾生火腿・古法橘酒</span>
+        </button>
+      </div>
+
+      <!-- 文明內容展示卡片 -->
+      <div class="triad-content-wrapper">
+        <!-- 斯拉夫 -->
+        <div class="triad-panel active" id="panel-slavic">
+          <div class="triad-grid">
+            <div class="triad-info">
+              <div class="civilization-badge badge-slavic">
+                <i class="fa-solid fa-feather-pointed"></i> 斯拉夫文明遺產（Slavic Heritage）
+              </div>
+              <h3 class="triad-heading">森林之子：人與木的靈性共生與互助社群</h3>
+              <p class="triad-text">
+                斯拉夫民族帶著深厚的「森林自然崇拜」定居於此。農村社會以「Soseska」（鄰里共耕互助會）為核心，發展出全世界獨一無二的<strong>木造乾草架（Kozolec）</strong>與無煙囪<strong>黑廚房（Črna kuhinja）</strong>。
+              </p>
+              <ul class="triad-highlights">
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <div><strong>春耕迎福與驅冬儀式：</strong>春季狂歡節「庫倫特（Kurent）」身披厚重羊皮、腰繫青銅巨鈴，用聲響震懾寒冬惡靈，祈求大地豐產。</div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <div><strong>神聖麥作與麵食禮俗：</strong>蕎麥與黑麥是斯拉夫農家的主食靈魂，發展出節慶必備的核桃捲餅（Potica）與蕎麥油渣糊（Ajdovi žganci）。</div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <div><strong>里布尼察木器手作（Suha roba）：</strong>利用森林雲杉與櫸木雕琢農具、木碗與起司模具，是歐洲歷史最悠久的木工手藝專利之一。</div>
+                </li>
+              </ul>
+            </div>
+            <div class="triad-media">
+              <div class="media-card">
+                <img src="images/hayrack_toplar.jpg" alt="雙聯乾草架 Toplar" class="media-img" loading="lazy">
+                <div class="media-caption">
+                  <span class="caption-title">斯洛維尼亞國寶：雙聯乾草架（Toplar）</span>
+                  <span class="caption-sub">斯拉夫木工工藝的極致結晶，完全不使用鐵釘的卡榫榫卯傑作</span>
+                </div>
+              </div>
+              <div class="media-thumbnails">
+                <div class="thumb-item" onclick="openLightbox('images/kurent_festival.jpg', '庫倫特（Kurent）驅冬春耕祭典', '被列入聯合國教科文組織非物質文化遺產的古老斯拉夫豐收祈福儀式')">
+                  <img src="images/kurent_festival.jpg" alt="庫倫特儀式">
+                  <span>庫倫特面具</span>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('images/potica_traditional.jpg', '傳統節慶核桃捲餅 Potica', '斯拉夫農家在重大節慶、婚禮與收割日必備的手工柴燒糕點')">
+                  <img src="images/potica_traditional.jpg" alt="斯洛維尼亞 Potica">
+                  <span>傳統 Potica</span>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('images/woodcraft_carving.jpg', '里布尼察木器工藝（Suha roba）', '數百年來農民在冬閒季節利用木料雕琢的農用木具')">
+                  <img src="images/woodcraft_carving.jpg" alt="木器雕刻">
+                  <span>木器工藝</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 日耳曼/哈布斯堡 -->
+        <div class="triad-panel" id="panel-germanic">
+          <div class="triad-grid">
+            <div class="triad-info">
+              <div class="civilization-badge badge-germanic">
+                <i class="fa-solid fa-crown"></i> 哈布斯堡與日耳曼遺產（Germanic / Habsburg）
+              </div>
+              <h3 class="triad-heading">阿爾卑斯高山酪農業與帝國農政秩序</h3>
+              <p class="triad-text">
+                數百年的哈布斯堡帝國統治，為斯洛維尼亞帶來了嚴密的林牧法規、條理化的農莊結構、精密水力磨坊與科學育種體系。
+              </p>
+              <ul class="triad-highlights">
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <div><strong>大高原牧民聚落（Velika Planina）：</strong>全歐現存最大且最古老的高山木瓦牧屋聚落，保留數百年夏季「高山輪牧（Planšarstvo）」傳統。</div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <div><strong>愛情定情起司（Trnič）：</strong>牧民在孤寂的高山以特製木模壓製成對的花紋起司，秋天下山時獻給心儀的姑娘象徵堅貞之愛。</div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <div><strong>皇家利比扎馬場（Lipica）：</strong>奧地利大公於喀斯特台地創立的世界級名馬育種莊園，展現精準的農業管理與草場生態平衡。</div>
+                </li>
+              </ul>
+            </div>
+            <div class="triad-media">
+              <div class="media-card">
+                <img src="images/velika_planina.jpg" alt="威利卡大高原高山牧民聚落" class="media-img" loading="lazy">
+                <div class="media-caption">
+                  <span class="caption-title">威利卡大高原牧民木屋（Velika Planina）</span>
+                  <span class="caption-sub">特殊的卵形松木瓦深挑簷設計，抵禦阿爾卑斯暴風雪的建築奇蹟</span>
+                </div>
+              </div>
+              <div class="media-thumbnails">
+                <div class="thumb-item" onclick="openLightbox('images/alpine_cheese_trnic.jpg', '阿爾卑斯高山熟成起司與 Trnič', '在高山牧場提煉、利用木雕印模壓花的高山農牧代表')">
+                  <img src="images/alpine_cheese_trnic.jpg" alt="高山起司">
+                  <span>高山牧業起司</span>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('images/alpine_cows.jpg', '阿爾卑斯鈴鐺牛群放牧', '維持高山草甸生物多樣性與傳統乳酪香氣的純淨放牧模式')">
+                  <img src="images/alpine_cows.jpg" alt="放牧牛群">
+                  <span>高山放牧</span>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('images/lipica_horses.jpg', '利比扎莊園白馬（Lipica）', '哈布斯堡王朝傳承四百餘年的純種白馬莊園與放牧草場')">
+                  <img src="images/lipica_horses.jpg" alt="利比扎馬">
+                  <span>利比扎莊園</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 拉丁/地中海 -->
+        <div class="triad-panel" id="panel-latin">
+          <div class="triad-grid">
+            <div class="triad-info">
+              <div class="civilization-badge badge-latin">
+                <i class="fa-solid fa-sun"></i> 拉丁與威尼斯遺產（Latin / Mediterranean）
+              </div>
+              <h3 class="triad-heading">石灰岩、紅土、布拉強風與地中海慢釀</h3>
+              <p class="triad-text">
+                受到鄰近義大利威尼斯共和國與亞得里亞海的熏陶，喀斯特（Kras）與戈里齊亞布達（Goriška Brda）展現了濃郁的拉丁風土美學。
+              </p>
+              <ul class="triad-highlights">
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <div><strong>喀斯特防風石屋（Kraška domačija）：</strong>面對狂暴的「布拉風（Bora）」，農舍以巨石閉合圍築、石雕大拱門（Porton）與集雨石井（Štirna）護衛家園。</div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <div><strong>喀斯特風乾生火腿（Kraški Pršut）：</strong>只用海鹽與天然冷冽的布拉風自然風乾熟成12至24個月，肉質柔嫩、甘甜醇厚。</div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  <div><strong>跨國界陶甕橙酒（Orange / Amber Wine）：</strong>在極東義大利與斯洛維尼亞邊境山丘，釀酒師以古羅馬與高加索陶甕長時間浸皮發酵，開創當代自然酒風潮。</div>
+                </li>
+              </ul>
+            </div>
+            <div class="triad-media">
+              <div class="media-card">
+                <img src="images/goriska_brda_vineyard.jpg" alt="戈里齊亞布達葡萄園梯田" class="media-img" loading="lazy">
+                <div class="media-caption">
+                  <span class="caption-title">戈里齊亞布達（Goriška Brda）陽光丘陵</span>
+                  <span class="caption-sub">斯洛維尼亞的托斯卡尼，跨越義大利邊界的梯田葡萄園與橄欖莊園</span>
+                </div>
+              </div>
+              <div class="media-thumbnails">
+                <div class="thumb-item" onclick="openLightbox('images/kraski_prsut_curing.jpg', '喀斯特生火腿（Kraški Pršut）熟成室', '藉由布拉風與地中海濕氣交替吹拂熟成的無煙燻頂級風乾火腿')">
+                  <img src="images/kraski_prsut_curing.jpg" alt="生火腿熟成">
+                  <span>喀斯特火腿</span>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('images/orange_wine_cellar.jpg', '邊境古法陶甕橙酒窖', '保留拉丁釀酒哲學，採用白葡萄連皮長時間浸漬的深琥珀色自然佳釀')">
+                  <img src="images/orange_wine_cellar.jpg" alt="橙酒酒窖">
+                  <span>陶甕橘酒</span>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('images/karst_stone_courtyard.jpg', '喀斯特石造封閉內院', '以厚重石灰岩堆砌抵擋強風、冬暖夏涼的石造農家經典結構')">
+                  <img src="images/karst_stone_courtyard.jpg" alt="喀斯特庭院">
+                  <span>石造農莊</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: 建築工藝深度解構 -->
+  <section class="section section-dark" id="architecture">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag"><i class="fa-solid fa-hammer"></i> VERNACULAR ARCHITECTURE</span>
+        <h2 class="section-title">活著的木石史詩：四大農家建築解構</h2>
+        <p class="section-desc">
+          斯洛維尼亞的農家建築是農民與嚴苛自然氣候搏鬥數百年所誕生的智慧結晶。點選下方建築卡片，深入探索其結構巧思。
+        </p>
+      </div>
+
+      <div class="arch-grid">
+        <!-- 卡片 1: 雙聯乾草架 Toplar -->
+        <div class="arch-card">
+          <div class="arch-img-wrap">
+            <img src="images/hero_kozolec.jpg" alt="雙聯乾草架 Toplar" loading="lazy">
+            <span class="arch-tag"><i class="fa-solid fa-tree"></i> 國家符號</span>
+          </div>
+          <div class="arch-body">
+            <h3 class="arch-name">雙聯乾草架 Toplar</h3>
+            <span class="arch-origin">廣泛分佈於 Gorenjska 與 Dolenjska</span>
+            <p class="arch-desc">
+              斯洛維尼亞是全世界唯一將「乾草架」發展成完整對稱木構建築的民族。雙排立柱架起厚重桁架，底層用於停放農用馬車、懸掛農具，上層通風通透曬乾小麥、玉米與乾草，全屋不用鐵釘，榫卯相契。
+            </p>
+            <div class="arch-tech">
+              <div class="tech-item"><i class="fa-solid fa-wind"></i> 天然風乾循環</div>
+              <div class="tech-item"><i class="fa-solid fa-cubes"></i> 傳統榫卯木構</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片 2: 黑廚房 Črna Kuhinja -->
+        <div class="arch-card">
+          <div class="arch-img-wrap">
+            <img src="images/black_kitchen_smoke.jpg" alt="黑廚房" loading="lazy">
+            <span class="arch-tag"><i class="fa-solid fa-fire-burner"></i> 生存中樞</span>
+          </div>
+          <div class="arch-body">
+            <h3 class="arch-name">無煙囪黑廚房 Črna Kuhinja</h3>
+            <span class="arch-origin">阿爾卑斯老農舍核心空間</span>
+            <p class="arch-desc">
+              沒有現代煙囪的古老明火灶膛。全屋燻黑的木樑承載著「一灶四用」的神奇功能：為全家主屋提供核心暖氣、木質柴煙滲透木樑驅除蛀蟲與濕氣、高懸的穀物迅速乾燥、同時煙燻熟成香腸與風乾肉品。
+            </p>
+            <div class="arch-tech">
+              <div class="tech-item"><i class="fa-solid fa-smog"></i> 煙燻防蛀防腐</div>
+              <div class="tech-item"><i class="fa-solid fa-temperature-arrow-up"></i> 熱能全室循環</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片 3: 大高原牧屋 Preskarjeva Bajta -->
+        <div class="arch-card">
+          <div class="arch-img-wrap">
+            <img src="images/velika_planina_winter.jpg" alt="大高原木瓦屋" loading="lazy" onerror="this.src='images/velika_planina.jpg'">
+            <span class="arch-tag"><i class="fa-solid fa-mountain-sun"></i> 高山避難所</span>
+          </div>
+          <div class="arch-body">
+            <h3 class="arch-name">高原卵形木瓦屋 Pastirski Stan</h3>
+            <span class="arch-origin">Velika Planina 高山草甸</span>
+            <p class="arch-desc">
+              特殊的同心橢圓形結構，深垂至地面的雲杉木瓦（Skodle）屋頂能抵禦極端山風與重雪積壓。中央為牧民起居、煮奶熟成起司的小室，外圍環形通道則在嚴冬作為牲畜保溫圈，人畜體溫相互依存。
+            </p>
+            <div class="arch-tech">
+              <div class="tech-item"><i class="fa-solid fa-snowflake"></i> 導雪破風弧線</div>
+              <div class="tech-item"><i class="fa-solid fa-shield-halved"></i> 人畜共生保溫</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 卡片 4: 喀斯特防風石造農莊 Kraška Domačija -->
+        <div class="arch-card">
+          <div class="arch-img-wrap">
+            <img src="images/stanjel_stone_village.jpg" alt="喀斯特石造建築" loading="lazy">
+            <span class="arch-tag"><i class="fa-solid fa-landmark-dome"></i> 地中海防禦</span>
+          </div>
+          <div class="arch-body">
+            <h3 class="arch-name">喀斯特防風石屋 Kraška Hiša</h3>
+            <span class="arch-origin">Kras 喀斯特石灰岩高原</span>
+            <p class="arch-desc">
+              為了對抗時速超過 150 公里的暴烈東北「布拉風（Bora）」，農舍以厚達一米的石灰岩砌成封閉式合院。入口設有精雕細琢的家族石拱門（Porton），庭院中必備石鑿集雨水槽（Štirna），彰顯喀斯特缺水土地的生存意志。
+            </p>
+            <div class="arch-tech">
+              <div class="tech-item"><i class="fa-solid fa-tornado"></i> 防禦布拉強風</div>
+              <div class="tech-item"><i class="fa-solid fa-droplet"></i> 雨水石槽收集</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: 大地廚房與風土特產 -->
+  <section class="section section-gastronomy" id="gastronomy">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag"><i class="fa-solid fa-utensils"></i> TASTE OF TERROIR</span>
+        <h2 class="section-title">自給自足的大地廚房</h2>
+        <p class="section-desc">
+          真正的農家滋味來自純淨的高山泉水、紅土礦物質、以及世代相傳的發酵與熟成工藝。
+        </p>
+      </div>
+
+      <div class="gastro-grid">
+        <!-- 美食 1: 喀斯特生火腿 -->
+        <div class="gastro-card">
+          <div class="gastro-img">
+            <img src="images/kraski_prsut_curing.jpg" alt="喀斯特生火腿" loading="lazy">
+          </div>
+          <div class="gastro-content">
+            <div class="gastro-meta">
+              <span class="gastro-type">地理標誌保護 (PGI)</span>
+              <span class="gastro-loc"><i class="fa-solid fa-location-dot"></i> 喀斯特高原</span>
+            </div>
+            <h3 class="gastro-title">喀斯特生火腿 Kraški Pršut</h3>
+            <p class="gastro-text">
+              嚴選優質豬後腿，僅用斯洛維尼亞瑟喬夫列（Sečovlje）天然海鹽醃漬，在喀斯特高原乾燥冷冽的布拉風與地中海濕潤海風的交替吹拂下，歷經 12 至 24 個月自然熟成。切片薄如蟬翼，油脂甘甜細緻，散發堅果芬芳。
+            </p>
+          </div>
+        </div>
+
+        <!-- 美食 2: 大高原定情起司 Trnič -->
+        <div class="gastro-card">
+          <div class="gastro-img">
+            <img src="images/alpine_cheese_trnic.jpg" alt="Trnič 起司" loading="lazy">
+          </div>
+          <div class="gastro-content">
+            <div class="gastro-meta">
+              <span class="gastro-type">阿爾卑斯文化遺產</span>
+              <span class="gastro-loc"><i class="fa-solid fa-location-dot"></i> Velika Planina</span>
+            </div>
+            <h3 class="gastro-title">大高原愛情起司 Trnič</h3>
+            <p class="gastro-text">
+              使用脫脂凝乳、鮮奶油與鹽揉捏成洋蔥狀，再以雕刻著繁複幾何花紋的木板（Pisave）在表面壓印。起司必定「成對製作」並在煙燻架上乾燥，秋天牧民下山時，一顆贈與心儀少女作為求婚誓物，另一顆由牧民自己珍藏。
+            </p>
+          </div>
+        </div>
+
+        <!-- 美食 3: 斯洛維尼亞核桃捲餅 Potica -->
+        <div class="gastro-card">
+          <div class="gastro-img">
+            <img src="images/potica_traditional.jpg" alt="Potica 傳統核桃捲" loading="lazy">
+          </div>
+          <div class="gastro-content">
+            <div class="gastro-meta">
+              <span class="gastro-type">傳統特產保證 (TSG)</span>
+              <span class="gastro-loc"><i class="fa-solid fa-location-dot"></i> 全境傳統農莊</span>
+            </div>
+            <h3 class="gastro-title">節慶核桃捲餅 Slovenska Potica</h3>
+            <p class="gastro-text">
+              斯洛維尼亞最著名的傳統烘焙代表。以酵母麵團擀成薄皮，均勻塗抹由核桃碎、蜂蜜、奶油與香草製成的濃郁餡料，捲起後置於帶有中空圓柱的陶土模具（Potičnik）中慢火柴燒烘烤，切面呈現優雅的同心年輪螺紋。
+            </p>
+          </div>
+        </div>
+
+        <!-- 美食 4: 跨界古法自然橘酒 Orange Wine -->
+        <div class="gastro-card">
+          <div class="gastro-img">
+            <img src="images/orange_wine_cellar.jpg" alt="自然派橘酒" loading="lazy">
+          </div>
+          <div class="gastro-content">
+            <div class="gastro-meta">
+              <span class="gastro-type">世界自然酒發源地</span>
+              <span class="gastro-loc"><i class="fa-solid fa-location-dot"></i> Goriška Brda / Kras</span>
+            </div>
+            <h3 class="gastro-title">古法浸皮橘酒 Orange / Amber Wine</h3>
+            <p class="gastro-text">
+              在斯洛維尼亞與義大利東北交界的丘陵，回歸數千年前古法，將 Rebula（麗波拉）等白葡萄連皮帶籽放入大型陶甕或大型橡木桶中長時間浸皮發酵數週至數月。酒液呈現高貴的琥珀橘金色，帶有杏桃乾、蜂蠟與悠長單寧。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: 互動風土走讀地圖 (Leaflet) -->
+  <section class="section section-dark" id="map-section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag"><i class="fa-solid fa-map-location"></i> TERROIR TRAIL MAP</span>
+        <h2 class="section-title">極東義大利 × 斯洛維尼亞 農莊走讀地圖</h2>
+        <p class="section-desc">
+          點擊地圖上的風土地標或右側選單，探索阿爾卑斯、喀斯特與邊境丘陵最具代表性的傳統農村聚落與活態博物館。
+        </p>
+      </div>
+
+      <div class="map-layout">
+        <div class="map-container-wrap">
+          <div id="terroir-map"></div>
+          <div class="map-overlay-badge">
+            <i class="fa-solid fa-mountain-sun"></i> 邊境風土導覽系統
+          </div>
+        </div>
+
+        <div class="map-sidebar">
+          <div class="sidebar-header">
+            <h3><i class="fa-solid fa-compass"></i> 精選走讀地標</h3>
+            <span class="badge-count">6 個核心站點</span>
+          </div>
+          <div class="trail-list" id="trail-list">
+            <!-- 由 JS 動態生成站點清單 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: 實景攝影典藏相簿 -->
+  <section class="section section-gallery" id="gallery">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag"><i class="fa-solid fa-camera-retro"></i> PHOTO ARCHIVE</span>
+        <h2 class="section-title">實景攝影典藏：光影下的農莊日常</h2>
+        <p class="section-desc">
+          點擊任意照片即可開啟高解析燈箱檢視與深度解說。
+        </p>
+      </div>
+
+      <!-- 篩選標籤 -->
+      <div class="gallery-filter-btns">
+        <button class="filter-btn active" data-filter="all">全部典藏</button>
+        <button class="filter-btn" data-filter="architecture">木石建築</button>
+        <button class="filter-btn" data-filter="pastoral">高山牧野</button>
+        <button class="filter-btn" data-filter="terroir">風土餐桌</button>
+        <button class="filter-btn" data-filter="folklore">民俗節慶</button>
+      </div>
+
+      <!-- 畫廊照片牆 -->
+      <div class="gallery-masonry" id="gallery-grid">
+        <!-- 項目 1 -->
+        <div class="gallery-item" data-category="architecture" onclick="openLightbox('images/hero_kozolec.jpg', '博欣 Studor 乾草架聚落群', '斯洛維尼亞阿爾卑斯山腳下著名的乾草架群落，見證世代相傳的木構技藝')">
+          <img src="images/hero_kozolec.jpg" alt="博欣乾草架" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">木石建築</span>
+            <h4>博欣 Studor 乾草架聚落群</h4>
+            <p><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大檢視</p>
+          </div>
+        </div>
+
+        <!-- 項目 2 -->
+        <div class="gallery-item" data-category="pastoral" onclick="openLightbox('images/velika_planina.jpg', '威利卡大高原夏季放牧地景', '全歐洲最壯麗的高山牧民聚落，松木瓦屋頂在群山環繞中宛如世外桃源')">
+          <img src="images/velika_planina.jpg" alt="大高原牧場" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">高山牧野</span>
+            <h4>威利卡大高原夏季放牧地景</h4>
+            <p><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大檢視</p>
+          </div>
+        </div>
+
+        <!-- 項目 3 -->
+        <div class="gallery-item" data-category="architecture" onclick="openLightbox('images/stanjel_stone_village.jpg', '斯塔尼耶爾（Štanjel）喀斯特石造城堡村', '抵禦強烈布拉風的石灰岩古聚落，拱門、窄巷與防風合院的典範')">
+          <img src="images/stanjel_stone_village.jpg" alt="喀斯特村落" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">木石建築</span>
+            <h4>斯塔尼耶爾喀斯特石造堡壘</h4>
+            <p><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大檢視</p>
+          </div>
+        </div>
+
+        <!-- 項目 4 -->
+        <div class="gallery-item" data-category="terroir" onclick="openLightbox('images/goriska_brda_vineyard.jpg', '布達丘陵葡萄園梯田景觀', '連接斯洛維尼亞與義大利弗留利的美麗丘陵，陽光、微風與老藤交織')">
+          <img src="images/goriska_brda_vineyard.jpg" alt="布達葡萄園" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">風土餐桌</span>
+            <h4>布達丘陵葡萄園梯田景觀</h4>
+            <p><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大檢視</p>
+          </div>
+        </div>
+
+        <!-- 項目 5 -->
+        <div class="gallery-item" data-category="folklore" onclick="openLightbox('images/kurent_festival.jpg', '普圖伊庫倫特驅冬狂歡節', '身著羊皮、佩戴巨型鈴鐺的面具使者，在初春巡遊村莊驅逐寒冬')">
+          <img src="images/kurent_festival.jpg" alt="庫倫特" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">民俗節慶</span>
+            <h4>普圖伊庫倫特驅冬狂歡節</h4>
+            <p><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大檢視</p>
+          </div>
+        </div>
+
+        <!-- 項目 6 -->
+        <div class="gallery-item" data-category="terroir" onclick="openLightbox('images/charcuterie_board.jpg', '傳統農家自產冷盤盛宴', '風乾生火腿、托爾明高山起司、黑麥酸種麵包與自釀葡萄酒')">
+          <img src="images/charcuterie_board.jpg" alt="農家冷盤" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">風土餐桌</span>
+            <h4>傳統農家自產冷盤盛宴</h4>
+            <p><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大檢視</p>
+          </div>
+        </div>
+
+        <!-- 項目 7 -->
+        <div class="gallery-item" data-category="pastoral" onclick="openLightbox('images/alpine_cows.jpg', '阿爾卑斯純淨高山草甸放牧', '佩戴青銅牛鈴的牛群在花草繁茂的夏季高山牧場自由覓食')">
+          <img src="images/alpine_cows.jpg" alt="高山放牧牛群" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">高山牧野</span>
+            <h4>阿爾卑斯純淨高山草甸放牧</h4>
+            <p><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大檢視</p>
+          </div>
+        </div>
+
+        <!-- 項目 8 -->
+        <div class="gallery-item" data-category="pastoral" onclick="openLightbox('images/lipica_horses.jpg', '利比扎純種白馬莊園', '世界上歷史最悠久的皇家馬種繁育基地，融合喀斯特草場生態')">
+          <img src="images/lipica_horses.jpg" alt="利比扎馬" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">高山牧野</span>
+            <h4>利比扎純種白馬莊園</h4>
+            <p><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大檢視</p>
+          </div>
+        </div>
+
+        <!-- 項目 9 -->
+        <div class="gallery-item" data-category="terroir" onclick="openLightbox('images/farm_table_agritourism.jpg', '從產地到餐桌的農莊早晨', '採集晨曦蔬果、鮮擠牛奶與柴燒麵包的慢活日常')">
+          <img src="images/farm_table_agritourism.jpg" alt="農莊餐桌" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-tag">風土餐桌</span>
+            <h4>從產地到餐桌的農莊早晨</h4>
+            <p><i class="fa-solid fa-magnifying-glass-plus"></i> 點擊放大檢視</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: 現代生態慢旅 (Turistična Kmetija) -->
+  <section class="section section-agritourism" id="agritourism">
+    <div class="container">
+      <div class="agri-banner">
+        <div class="agri-content">
+          <span class="section-tag"><i class="fa-solid fa-leaf"></i> GREEN SUSTAINABILITY</span>
+          <h2 class="agri-title">當代農莊慢旅哲學：Turistična Kmetija</h2>
+          <p class="agri-desc">
+            斯洛維尼亞被評為全球綠色永續旅遊典範。遍佈山間的傳統農莊轉型為「生態農莊旅宿（Turistična Kmetija）」，堅持 100% 自給自足、食材零里程（Zero Food Miles）、以及百年石木老屋的現代重生。
+          </p>
+          <div class="agri-features">
+            <div class="feat-box">
+              <i class="fa-solid fa-seedling"></i>
+              <h4>零哩程自耕有機</h4>
+              <p>餐桌上所有起司、肉品、麵包與酒皆出自農舍主人親手自釀自製。</p>
+            </div>
+            <div class="feat-box">
+              <i class="fa-solid fa-house-chimney-window"></i>
+              <h4>百年石木古蹟旅宿</h4>
+              <p>保留黑廚房、厚石牆與木瓦頂，融入當代設計與極致舒適體驗。</p>
+            </div>
+            <div class="feat-box">
+              <i class="fa-solid fa-heart-pulse"></i>
+              <h4>心靈避難所</h4>
+              <p>在牛鈴與松林風聲中甦醒，重溫人與土地最初的深情連結。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 頁尾資訊 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo"><i class="fa-solid fa-wheat-awn"></i> SLOVENSKA DOMAČIJA</div>
+          <p>極東義大利・阿爾卑斯與喀斯特跨界文化策展深旅系列</p>
+          <span class="footer-sub">Curated with Passion for Cultural Heritage & Vernacular Architecture</span>
+        </div>
+        <div class="footer-links-group">
+          <h4>策展導覽章節</h4>
+          <ul>
+            <li><a href="#triad">三大文明風土基因</a></li>
+            <li><a href="#architecture">四大農家建築解構</a></li>
+            <li><a href="#gastronomy">自給自足大地廚房</a></li>
+            <li><a href="#map-section">風土走讀互動地圖</a></li>
+            <li><a href="#gallery">實景攝影典藏相簿</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>相鄰探索主題</h4>
+          <ul>
+            <li><a href="../拉多夫利察與蜂蜜/index.html">拉多夫利察與蜜蜂之魂</a></li>
+            <li><a href="../特里埃斯特/index.html">特里埃斯特中歐咖啡之都</a></li>
+            <li><a href="../帕瑪諾瓦/index.html">帕瑪諾瓦九角星形要塞</a></li>
+            <li><a href="../望海堡 Miramare Castle 歷史走讀/index.html">望海堡歷史走讀</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 極東義大利文化深旅數位策展專案. All Rights Reserved. Dedicated to Alpine, Karst & Slavic Heritage.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 燈箱 Modal Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-dialog" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox()" aria-label="關閉燈箱">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="lightbox-img-wrap">
+        <img src="" alt="" id="lightbox-img">
+      </div>
+      <div class="lightbox-info">
+        <h3 id="lightbox-title">標題</h3>
+        <p id="lightbox-desc">詳細說明文字</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
