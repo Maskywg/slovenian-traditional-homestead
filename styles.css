@@ -734,6 +734,197 @@ img {
 }
 
 /* ==========================================================================
+   SECTION: 硬核對比 (COMPARISON SECTION)
+   ========================================================================== */
+.section-comparison {
+  background: radial-gradient(circle at 50% 10%, rgba(212, 175, 55, 0.08) 0%, #0c0f0d 70%);
+  border-top: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.comp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.comp-card {
+  background: var(--bg-card-dark);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.comp-card:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.comp-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border-glass);
+  margin-bottom: 1.4rem;
+}
+
+.comp-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid var(--primary-gold);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-gold-light);
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.comp-num {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--primary-gold);
+  font-weight: 700;
+  display: block;
+}
+
+.comp-title-group h3 {
+  font-size: 1.25rem;
+  color: #ffffff;
+  margin-top: 0.2rem;
+}
+
+.comp-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.comp-row {
+  padding: 1.1rem;
+  border-radius: var(--radius-sm);
+}
+
+.comp-general {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid #777;
+}
+
+.comp-general .comp-label {
+  color: #a8a8a8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.comp-general p {
+  font-size: 0.92rem;
+  color: #b0b5b2;
+  margin-bottom: 0;
+}
+
+.comp-hybrid {
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-left: 3px solid var(--primary-gold);
+}
+
+.comp-hybrid .comp-label {
+  color: var(--primary-gold-light);
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.comp-hybrid p {
+  font-size: 0.95rem;
+  color: #e5ebe7;
+  margin-bottom: 0;
+  line-height: 1.65;
+}
+
+.comp-table-wrapper {
+  background: var(--bg-card-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.comp-table-title {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.comp-table-title i {
+  color: var(--primary-gold);
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.comp-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.comp-table th, .comp-table td {
+  padding: 1.1rem 1.2rem;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.comp-table th {
+  background: rgba(0, 0, 0, 0.4);
+  color: #ffffff;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.highlight-th {
+  background: rgba(212, 175, 55, 0.2) !important;
+  color: var(--primary-gold-light) !important;
+  border-top: 2px solid var(--primary-gold);
+}
+
+.highlight-td {
+  background: rgba(212, 175, 55, 0.08);
+  color: #ffffff !important;
+  border-left: 1px solid rgba(212, 175, 55, 0.2);
+  border-right: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.comp-table td {
+  color: var(--text-muted-dark);
+}
+
+.comp-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.comp-table tr:hover .highlight-td {
+  background: rgba(212, 175, 55, 0.12);
+}
+
+/* ==========================================================================
    SECTION 2: 建築工藝深度解構
    ========================================================================== */
 .arch-grid {
@@ -1411,6 +1602,9 @@ img {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+  .comp-grid {
+    grid-template-columns: 1fr;
+  }
   .map-layout {
     grid-template-columns: 1fr;
   }
@@ -1471,6 +1665,13 @@ img {
   .stat-divider {
     width: 60px;
     height: 1px;
+  }
+  .comp-table-wrapper {
+    padding: 1.5rem 1rem;
+  }
+  .comp-table th, .comp-table td {
+    padding: 0.8rem 0.6rem;
+    font-size: 0.85rem;
   }
   .gallery-masonry {
     grid-template-columns: 1fr;
