@@ -925,6 +925,269 @@ img {
 }
 
 /* ==========================================================================
+   SECTION: 布拉風傳奇 (BORA SECTION)
+   ========================================================================== */
+.section-bora {
+  background: radial-gradient(circle at 50% 0%, rgba(100, 181, 246, 0.08) 0%, #0c0f12 70%);
+  border-top: 1px solid rgba(100, 181, 246, 0.2);
+  border-bottom: 1px solid var(--border-dark);
+}
+
+.bora-physics-card {
+  background: rgba(24, 30, 36, 0.85);
+  border: 1px solid rgba(100, 181, 246, 0.25);
+  border-radius: var(--radius-md);
+  padding: 2rem 2.5rem;
+  margin-bottom: 3.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.bora-physics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.physics-badge {
+  background: rgba(100, 181, 246, 0.15);
+  color: #90caf9;
+  border: 1px solid #64b5f6;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.physics-speed {
+  color: #ffd54f;
+  font-size: 0.95rem;
+}
+
+.physics-speed strong {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.physics-desc {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #cfd8dc;
+  margin-bottom: 0;
+}
+
+.bora-dual-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+}
+
+.bora-col {
+  background: var(--bg-card-dark);
+  border-radius: var(--radius-md);
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.bora-gift {
+  border: 1px solid rgba(92, 219, 149, 0.25);
+}
+
+.bora-gift:hover {
+  border-color: rgba(92, 219, 149, 0.5);
+  transform: translateY(-4px);
+}
+
+.bora-challenge {
+  border: 1px solid rgba(239, 83, 80, 0.25);
+}
+
+.bora-challenge:hover {
+  border-color: rgba(239, 83, 80, 0.5);
+  transform: translateY(-4px);
+}
+
+.bora-col-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.bora-col-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.gift-icon {
+  background: rgba(92, 219, 149, 0.15);
+  color: #5cdb95;
+  border: 1px solid #5cdb95;
+}
+
+.chal-icon {
+  background: rgba(239, 83, 80, 0.15);
+  color: #ef5350;
+  border: 1px solid #ef5350;
+}
+
+.bora-type-tag {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  display: block;
+}
+
+.bora-gift .bora-type-tag { color: #5cdb95; }
+.bora-challenge .bora-type-tag { color: #ef5350; }
+
+.bora-col-header h3 {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-top: 0.2rem;
+}
+
+.bora-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.bora-item {
+  background: rgba(255, 255, 255, 0.025);
+  border-radius: var(--radius-sm);
+  padding: 1.1rem;
+}
+
+.bora-item .item-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bora-gift .item-title i { color: #5cdb95; }
+.bora-challenge .item-title i { color: #ef5350; }
+
+.bora-item p {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--text-muted-dark);
+  margin-bottom: 0;
+}
+
+.bora-adaptation-box {
+  background: var(--bg-card-dark);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.adapt-title {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.adapt-title i {
+  color: var(--primary-gold);
+}
+
+.adapt-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.adapt-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: all var(--transition-fast);
+}
+
+.adapt-card:hover {
+  border-color: var(--primary-gold);
+  background: rgba(212, 175, 55, 0.06);
+  transform: translateY(-3px);
+}
+
+.adapt-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(212, 175, 55, 0.15);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-gold-light);
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+.adapt-card h4 {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+}
+
+.adapt-card p {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-muted-dark);
+  margin-bottom: 0;
+}
+
+.bora-quote {
+  padding: 1.2rem 1.8rem;
+  background: rgba(100, 181, 246, 0.08);
+  border-left: 3px solid #64b5f6;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #e0f2fe;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+}
+
+.bora-quote i {
+  color: #64b5f6;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
    SECTION 2: 建築工藝深度解構
    ========================================================================== */
 .arch-grid {
@@ -1605,6 +1868,12 @@ img {
   .comp-grid {
     grid-template-columns: 1fr;
   }
+  .bora-dual-grid {
+    grid-template-columns: 1fr;
+  }
+  .adapt-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .map-layout {
     grid-template-columns: 1fr;
   }
@@ -1672,6 +1941,9 @@ img {
   .comp-table th, .comp-table td {
     padding: 0.8rem 0.6rem;
     font-size: 0.85rem;
+  }
+  .adapt-grid {
+    grid-template-columns: 1fr;
   }
   .gallery-masonry {
     grid-template-columns: 1fr;
